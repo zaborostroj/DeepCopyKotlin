@@ -4,6 +4,7 @@ import objects.ClassA
 import objects.ClassB
 import objects.ClassC
 import objects.ClassD
+import objects.Man
 import objects.ObjectWithArray
 import objects.ObjectWithFinal
 import objects.ObjectWithSimpleFields
@@ -104,5 +105,23 @@ internal class ObjectUtilsTest {
         val output = objectUtils.copy(input) as ObjectWithFinal
 
         assert(getHexCode(input.final) != getHexCode(output.final))
+    }
+
+    @Test
+    fun `copy Man object`() {
+        val objectUtils = ObjectUtils()
+
+        val input = Man()
+
+        val output = objectUtils.copy(input) as Man
+
+        input.name = "new_name"
+        input.age = 43
+        input.favoriteBooks = listOf("new_book")
+
+        assert(output.name == "name")
+        assert(output.age == 42)
+        assert(output.favoriteBooks[0] == "book1")
+        assert(output.favoriteBooks[1] == "book2")
     }
 }

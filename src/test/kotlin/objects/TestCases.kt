@@ -27,3 +27,9 @@ class ObjectWithStaticField(
 class ObjectWithArray(
     var array: IntArray = intArrayOf(42, 43)
 )
+
+data class Man(
+    var name: String = "name",
+    var age: Int = 42,
+    var favoriteBooks: List<String> = listOf("book1", "book2")
+)
