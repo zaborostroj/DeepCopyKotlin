@@ -16,7 +16,7 @@ class ObjectUtils {
         val initialClass = initialObject.javaClass
 
         if (objectsStorage.containsKey(initialObjectId)) {
-            objectsStorage[initialObjectId]
+            return objectsStorage[initialObjectId]
         }
 
         val resultObject = getNewInstance(initialClass)
@@ -28,11 +28,13 @@ class ObjectUtils {
 
             field.isAccessible = true
 
-            if (Modifier.isFinal(field.modifiers)) {
-                val modifiers = Field::class.java.getDeclaredField("modifiers")
-                modifiers.isAccessible = true
-                modifiers.setInt(field, field.modifiers and Modifier.FINAL.inv() )
-            }
+            // TODO: проверить необходимость изменения модификатора final;
+            //  в ubuntu тест проходил с этим ифом
+            //  if (Modifier.isFinal(field.modifiers)) {
+            //      val modifiers = Field::class.java.getDeclaredField("modifiers")
+            //      modifiers.isAccessible = true
+            //      modifiers.setInt(field, field.modifiers and Modifier.FINAL.inv() )
+            //  }
 
             field.set(resultObject, copyField(field, initialObject))
         }

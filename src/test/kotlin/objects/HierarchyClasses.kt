@@ -1,9 +1,16 @@
 package objects
 
-data class ClassA(val classB: ClassB, val classC: ClassC, val classD: ClassD)
+data class ClassA(
+    var classB: ClassB,
+    var classC: ClassC,
+    var classD: ClassD
+)
 
-data class ClassB (val classA: ClassA, val classD: ClassD)
+data class ClassB (
+    var classA: ClassA? = null,
+    var classD: ClassD? = null
+)
 
-data class ClassC (val classD: ClassD)
+data class ClassC (var classD: ClassD)
 
-data class ClassD (val anInt: Int = 42)
+data class ClassD (var anInt: Int = 42)

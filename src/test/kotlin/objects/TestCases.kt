@@ -11,3 +11,19 @@ data class ObjectWithSimpleFields(
 
     var boolean: Boolean = true
 )
+
+data class ObjectWithFinal(
+    val final: ClassD
+)
+
+class ObjectWithStaticField(
+    var int: Int = 42
+) {
+    companion object {
+        const val STATIC_FIELD = 42
+    }
+}
+
+class ObjectWithArray(
+    var array: IntArray = intArrayOf(42, 43)
+)
